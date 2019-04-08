@@ -1,0 +1,56 @@
+Proc : Ingresar Datos de varios Autos
+    numeroAutos         i[0-N]    
+    marca               x['a-z A-Z 0-9']
+    origen              x['a-z A-Z 0-9']
+    costo               i[0-N]
+    impuestoGenerado    i[0-N]
+    precioTotalAuto     i[0-N]
+    precioTotalVentas   i[0-N]
+    autosArgentina      i[0-N]
+    autosColombia       i[0-N]
+    autosChile          i[0-N]
+    autosOtros          i[0-N]}
+
+    Escribir "Cuantos Autos Desea Ingresar"
+    leer numeroAutos;
+    impuesto <- 0
+    autosArgentina <- 0
+    autosChile <- 0
+    autosColombia <- 0
+    autosOtros <- 0
+
+    i <- 0
+    mientras i < numeroAutos hacer
+        Escribir "Ingrese la marca del auto"
+        leer marca
+        Escribir "Ingrese el origen del auto"
+        leer origen
+        Escribir "Ingrese el costo del auto"
+        leer costo
+
+        Segun origen
+            Argentina:
+                impuesto <- costo * 0.20
+                autosArgentina <- autosArgentina + 1
+            Colombia: 
+                impuesto <- costo * 0.25
+                autosColombia <- autosColombia + 1
+            Chile:
+                impuesto <- costo * 0.30
+                autosChile <- autosChile + 1
+            Si no
+                impuesto <- costo * 0.40 
+                autosOtros <- autosOtros + 1
+        Fin.Segun
+        precioTotalAuto <- costo + impuesto
+        precioTotalVentas <- precioTotalVentas + precioTotalAuto
+        impuestoGenerado <- impuestoGenerado + impuesto
+    fin.mientras
+    Escribir "El total de autos Importados es de: " , numeroAutos
+    Escribir "El total de impuestos generados es de: ", impuestoGenerado
+    Escribir "El total de los precio de venta es de: ", precioTotalVentas
+    Escribir "Autos de Argentina: ", autosArgentina
+    Escribir "Autos de Colombia ", autosColombia
+    Escribir "Autos de Chile", autosChile
+    Escribir "Autos de otros paises", autosOtros
+fin.proc
